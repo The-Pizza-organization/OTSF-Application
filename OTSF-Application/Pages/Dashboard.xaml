@@ -10,8 +10,18 @@
       Title="Dashboard" Background="White">
 
     <Grid>
-
-        <elem:DeviceElement Id="1" DeviceName="Device 1" DeviceStatus="Error" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="82,49,0,0" Height="40" Width="200" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer>
+            <StackPanel x:Name="DeviceStackPanel" >
+                <elem:DeviceElement Id="1" DeviceName="Device 1" DeviceStatus="Connected" Height="40"/>
+                <elem:DeviceElement Id="1" DeviceName="Device 1" DeviceStatus="Disconnected" Height="40"/>
+                <elem:DeviceElement Id="1" DeviceName="Device 1" DeviceStatus="Error" Height="40"/>
+                <elem:DeviceElement Id="1" DeviceName="Device 1" DeviceStatus="Warning" Height="40"/>
+            </StackPanel>
+        </ScrollViewer>
 
     </Grid>
 </Page>

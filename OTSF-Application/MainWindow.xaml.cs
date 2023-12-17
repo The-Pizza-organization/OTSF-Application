@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OTSF_Application.MQTT;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,13 +20,13 @@ namespace OTSF_Application {
     /// </summary>
     public partial class MainWindow : Window {
 
-
-
-
+        PageManager pageManager;
 
         public MainWindow() {
-            InitializeComponent();
-        }
 
+            InitializeComponent();
+
+            pageManager = PageManager.GetInstance(this);
+        }
     }
 }

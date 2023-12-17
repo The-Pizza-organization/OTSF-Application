@@ -24,13 +24,13 @@
                 Storyboard.TargetName="fDashboard"
                 Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.X)"
                 Duration="0:0:0.15"
-                To="-800">
+                To="{Binding ElementName=fDashboard, Path=ActualWidth, Converter={StaticResource DoubleMultiplierConverter}, ConverterParameter=-1}">
             </DoubleAnimation>
             <DoubleAnimation
                 Storyboard.TargetName="fSettings"
                 Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.X)"
                 Duration="0:0:0.15"
-                To="800">
+                To="{Binding ElementName=fSettings, Path=ActualWidth, Converter={StaticResource DoubleMultiplierConverter}, ConverterParameter=1}">
             </DoubleAnimation>
         </Storyboard>
 
@@ -39,13 +39,13 @@
                 Storyboard.TargetName="fDevice"
                 Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.X)"
                 Duration="0:0:0.15"
-                To="-800">
+                To="{Binding ElementName=fDevice, Path=ActualWidth, Converter={StaticResource DoubleMultiplierConverter}, ConverterParameter=-1}">
             </DoubleAnimation>
             <DoubleAnimation
                 Storyboard.TargetName="fDashboard"
                 Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.X)"
                 Duration="0:0:0.15"
-                To="-1600">
+                To="{Binding ElementName=fDashboard, Path=ActualWidth, Converter={StaticResource DoubleMultiplierConverter}, ConverterParameter=-2}">
             </DoubleAnimation>
             <DoubleAnimation
                 Storyboard.TargetName="fSettings"
@@ -60,7 +60,7 @@
                 Storyboard.TargetName="fDevice"
                 Storyboard.TargetProperty="(RenderTransform).(TranslateTransform.X)"
                 Duration="0:0:0.15"
-                To="800">
+                To="{Binding ElementName=fDevice, Path=ActualWidth, Converter={StaticResource DoubleMultiplierConverter}, ConverterParameter=1}">
             </DoubleAnimation>
             <DoubleAnimation
                 Storyboard.TargetName="fDashboard"
@@ -78,7 +78,7 @@
     </Window.Resources>
 
     <Window.Triggers>
-        <EventTrigger RoutedEvent="Button.Click" SourceName="btDashboard">
+        <EventTrigger x:Name="TriggerDashboard" RoutedEvent="Button.Click" SourceName="btDashboard">
             <BeginStoryboard Storyboard="{StaticResource GoToDashboard}"/>
         </EventTrigger>
         <EventTrigger RoutedEvent="Button.Click" SourceName="btDevice">

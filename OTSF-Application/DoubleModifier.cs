@@ -9,8 +9,12 @@ using System.Windows.Data;
 namespace OTSF_Application {
     public class DoubleMultiplierConverter : IValueConverter {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            if (value is double && parameter is double) {
-                return (double)value * (double)parameter;
+
+            double param = System.Convert.ToDouble(parameter);
+
+
+            if (value is double) {
+                return (double)value * param;
             }
             return value;
         }
@@ -19,4 +23,5 @@ namespace OTSF_Application {
             throw new NotImplementedException();
         }
     }
+
 }

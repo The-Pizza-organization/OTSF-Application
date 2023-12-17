@@ -34,13 +34,18 @@ namespace OTSF_Application.Elements {
         } }
 
         private DeviceStatus _status;
-        public DeviceStatus DeviceStatus { get { return _status; } set { 
+        public DeviceStatus DeviceStatus { get { return _status; } set {
+            lock (this) {
                 _status = value;
-                bStatus.Background = StatusColor;
+                    try {
+                        this.Dispatcher.Invoke(() => {
+                            bStatus.Background = StatusColor;
+                        });
+                    }catch(Exception e) { }
+            }
         } }
 
         public Brush StatusColor { get {
-
                 switch (DeviceStatus) {
                     case DeviceStatus.Connected:
                         return Brushes.Green;
@@ -53,7 +58,6 @@ namespace OTSF_Application.Elements {
                     default:
                         return Brushes.OrangeRed;
                 }
-
             }
         }
 
@@ -62,7 +66,6 @@ namespace OTSF_Application.Elements {
 
             Id = "[ID]";
             DeviceName = "[DEVICE NAME]";
-
         }
     }
 }
