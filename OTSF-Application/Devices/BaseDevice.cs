@@ -19,6 +19,7 @@ namespace OTSF_Application.Devices {
         public Vector3 acceleration {get;set;}
         public Vector3 rotation_speed {get;set;}
         public bool HasDoorBeenOpened {get;set;}
+        public DateTime OpenedAt { get; set; }
         public float latitude {get;set;}
         public float longitude {get;set;}
 
@@ -141,6 +142,7 @@ namespace OTSF_Application.Devices {
             //once true -> always true
             if (!HasDoorBeenOpened && e.isDoorOpen) {
                 HasDoorBeenOpened = true;
+                OpenedAt = DateTime.Now;
             }
 
             latitude = e.latitude;

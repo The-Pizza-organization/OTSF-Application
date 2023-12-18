@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
         
         <Grid Grid.Column="0">
-            <m:Map x:Name="Map" Center="37.806021,-122.407007" ZoomLevel="15"/>
+            <m:Map CredentialsProvider="DAsyWte32z0p01vPhdX8~KC_fzGoWQptrgQhP-VExrg~Ap8ux7DUEblRaLeXSALiT4zcKaVwovrhiS9nkHMgb_mUlPL5XGi1uYOvQOjvDC3W"  x:Name="Map" Center="37.806021,-122.407007" ZoomLevel="15"/>
             <Ellipse HorizontalAlignment="Center" VerticalAlignment="Center" Width="10" Height="10" Fill="#FFFF4141" />
         </Grid>
 
@@ -39,6 +39,8 @@
                 <Label x:Name="LbName">Hello</Label>
                 <Label x:Name="LbTemp">12ºC</Label>
                 <Label x:Name="LbDoor">Opened</Label>
+                <Label x:Name="LbDate"></Label>
+                <Label x:Name="LbLastDate">Last Update :</Label>
             </StackPanel>
 
             <lvc:CartesianChart x:Name="AccelerationGraph" Grid.Row="1" Grid.ColumnSpan="2" LegendLocation="Top" >

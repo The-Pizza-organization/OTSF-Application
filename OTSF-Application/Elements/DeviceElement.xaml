@@ -1,22 +1,24 @@
-﻿<UserControl x:Class="OTSF_Application.Elements.DeviceElement"
+﻿<Border x:Class="OTSF_Application.Elements.DeviceElement"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OTSF_Application.Elements"
              mc:Ignorable="d" 
+             CornerRadius="4" Padding="10" Background="White"
              d:DesignHeight="40" d:DesignWidth="200"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    
+    <Button x:Name="button"  Margin="-10,-10,-10,-10" Background="White" BorderBrush="{x:Null}">
 
-    <Border CornerRadius="4" Padding="10" Background="White">
-        <Button Background="{x:Null}" BorderBrush="{x:Null}" Margin="-10,-10,-10,-10" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-            <StackPanel Orientation="Horizontal" Width="190">
-                <Border    x:Name="bStatus" Background="{Binding StatusColor, UpdateSourceTrigger=PropertyChanged}" Width="20" Height="20" CornerRadius="20" HorizontalAlignment="Left" />
-                <TextBlock x:Name="tbID"    Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
-                <TextBlock                  Text="-" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
-                <TextBlock x:Name="tbName"  Text="{Binding DeviceName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
-            </StackPanel>
-        </Button>
-    </Border>
+        <StackPanel Orientation="Horizontal" Width="190">
+            <Border    x:Name="bStatus" Background="{Binding StatusColor, UpdateSourceTrigger=PropertyChanged}" Width="20" Height="20" CornerRadius="20" HorizontalAlignment="Left" />
+            <TextBlock x:Name="tbID"    Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <TextBlock                  Text="-" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+            <TextBlock x:Name="tbName"  Text="{Binding DeviceName, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+        </StackPanel>
 
-</UserControl>
+    </Button>
+            
+
+</Border>

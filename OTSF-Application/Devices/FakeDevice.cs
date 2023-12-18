@@ -37,8 +37,8 @@ namespace OTSF_Application.Devices {
             Random random = new Random();
             SpecialRandom specialRandom = new();
 
-            specialRandom.SetPreviousData("latitude", 45.5f);
-            specialRandom.SetPreviousData("longitude", 2f);
+            specialRandom.SetPreviousData("latitude", 48.96142252719855f);
+            specialRandom.SetPreviousData("longitude", 3.288612109430474f);
             specialRandom.SetPreviousData("temp", 20f);
 
             specialRandom.SetPreviousData("a_x", 0f);
@@ -68,7 +68,7 @@ namespace OTSF_Application.Devices {
                 data.roll = specialRandom.GetRandom("roll", 0.1f);
                 data.yaw = specialRandom.GetRandom("yaw", 0.1f);
 
-                data.isDoorOpen = random.NextDouble() > 0.5;
+                data.isDoorOpen = random.NextDouble() < 0.01;
 
                 // Generate latitude and longitude, the new value is always near the last
                 data.latitude = specialRandom.GetNearRandom("latitude", 0.0001f);
@@ -86,7 +86,7 @@ namespace OTSF_Application.Devices {
 
     class SpecialRandom {
 
-        Random rnd = new Random();
+        static Random rnd = new Random();
 
         Dictionary<string, float> data = new Dictionary<string, float>();
 

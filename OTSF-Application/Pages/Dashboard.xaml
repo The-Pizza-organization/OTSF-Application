@@ -14,13 +14,13 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ScrollViewer>
-            <StackPanel x:Name="DeviceStackPanel" >
+        <ScrollViewer Margin="10" Grid.ColumnSpan="2">
+            <WrapPanel x:Name="DeviceStackPanel" >
                 <elem:DeviceElement Id="1" DeviceName="Device 1" DeviceStatus="Connected" Height="40"/>
                 <elem:DeviceElement Id="1" DeviceName="Device 1" DeviceStatus="Disconnected" Height="40"/>
                 <elem:DeviceElement Id="1" DeviceName="Device 1" DeviceStatus="Error" Height="40"/>
                 <elem:DeviceElement Id="1" DeviceName="Device 1" DeviceStatus="Warning" Height="40"/>
-            </StackPanel>
+            </WrapPanel>
         </ScrollViewer>
 
     </Grid>

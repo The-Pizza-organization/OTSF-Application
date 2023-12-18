@@ -18,7 +18,7 @@ namespace OTSF_Application.Elements {
     /// <summary>
     /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class DeviceElement : UserControl {
+    public partial class DeviceElement : Border {
 
         private string _id;
         public string Id {
@@ -33,15 +33,25 @@ namespace OTSF_Application.Elements {
                 tbName.Text = _name;
         } }
 
+        bool has_been_open = false;
+
         private DeviceStatus _status;
         public DeviceStatus DeviceStatus { get { return _status; } set {
             lock (this) {
                 _status = value;
-                    try {
-                        this.Dispatcher.Invoke(() => {
-                            bStatus.Background = StatusColor;
-                        });
-                    }catch(Exception e) { }
+                if (!has_been_open) {
+                    has_been_open = _status == DeviceStatus.Warning;
+                }
+
+                if (_status == DeviceStatus.Connected && has_been_open) {
+                    _status = DeviceStatus.Warning;
+                }
+
+                try {
+                    this.Dispatcher.Invoke(() => {
+                        bStatus.Background = StatusColor;
+                    });
+                }catch(Exception e) { }
             }
         } }
 

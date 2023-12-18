@@ -20,6 +20,7 @@ namespace OTSF_Application {
         Vector3 rotation_speed { get; set; }
 
         bool HasDoorBeenOpened { get; set; }
+        DateTime OpenedAt { get; set; }
 
         float latitude { get; set; }
         float longitude { get; set; }

@@ -88,7 +88,6 @@ namespace OTSF_Application.Pages {
                 {
                     Title = "Temperatures",
                     Values = new ChartValues<float> { 0 },
-                    Fill = Brushes.Transparent,
                     PointGeometry = null,
                 },
 
@@ -178,10 +177,14 @@ namespace OTSF_Application.Pages {
                 if(device.HasDoorBeenOpened) {
                     LbDoor.Content = "Open";
                     LbDoor.Foreground = Brushes.Red;
+                    LbDate.Content = device.OpenedAt.ToString("G");
                 } else {
                     LbDoor.Content = "Closed";
+                    LbDate.Content = "";
                     LbDoor.Foreground = Brushes.Green;
                 }
+
+                LbLastDate.Content = $"Last update:{DateTime.Now.ToString("G")}";
 
                 LbId.Content = device.deviceElement.Id;
                 LbName.Content = device.deviceElement.DeviceName;

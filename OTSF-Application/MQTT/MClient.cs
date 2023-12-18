@@ -49,11 +49,15 @@ namespace OTSF_Application.MQTT {
             var json = JsonNode.Parse(decodedPayload);
             // Get the data field
             JsonNode? data = json["uplink_message"]["decoded_payload"];
+            JsonNode? location = json["uplink_message"]["locations"]["frm-payload"];
 
             // Create a new DeviceData object
             DeviceData deviceData = new DeviceData();
 
             // Set the properties of the DeviceData object
+            if (data == null || data["temperature"] == null) {
+                return;
+            }
             deviceData.temperature = (float)data["temperature"];
             deviceData.pitch = (float)data["g_x"];
             deviceData.roll = (float)data["g_y"];
@@ -64,6 +68,11 @@ namespace OTSF_Application.MQTT {
             deviceData.a_x = (float)data["a_x"];
             deviceData.a_y = (float)data["a_y"];
             deviceData.a_z = (float)data["a_z"];
+
+            if (location != null) {
+                deviceData.latitude = (float)location["latitude"];
+                deviceData.longitude = (float)location["longitude"];
+            }
 
             // Invoke the DataReceived event
             DataReceived?.Invoke(this, deviceData);

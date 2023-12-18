@@ -33,7 +33,42 @@ namespace OTSF_Application.Pages {
                 new FakeDevice("H.Saint pierre"),
                 new FakeDevice("H.ULB",0.15f),
                 new FakeDevice("H.UCL",0.2f),
+                new FakeDevice("Mercy Meadows General Hospital",0.01f),
+                new FakeDevice("Phoenix Health Haven",0.9f),
+                new FakeDevice("Radiant Care Center",0.01f),
+                new FakeDevice("Evergreen Wellness Clinic",0.01f),
+                new FakeDevice("Evergreen Wellness Clinic",0.01f),
+                new FakeDevice("Celestial Crossroads Medical Center",0.01f),
+                new FakeDevice("Oasis Health Oasis",0.01f),
+                new FakeDevice("Beacon Hill Medical Institute",0.01f),
+                new FakeDevice("Quantum Health Quarters",0.01f),
+                new FakeDevice("Nebula Wellness Center",0.01f),
+                new FakeDevice("Seraphim Springs Hospital",0.01f),
+                new FakeDevice("Jubilee Junction General Hospital",0.01f),
             };
+
+            /*
+                Mercy Meadows General Hospital
+                Phoenix Health Haven
+                Radiant Care Center
+                Serenity Springs Medical Center
+                Evergreen Wellness Clinic
+                Harmony Heights Hospital
+                Celestial Crossroads Medical Center
+                Oasis Health Oasis
+                Crestwood Sanctuary Hospital
+                Beacon Hill Medical Institute
+                Unity Medical Gardens
+                Sapphire Skies Memorial Hospital
+                Tranquil Trails Healthcare
+                Quantum Health Quarters
+                Jubilee Junction General Hospital
+                Horizon Healing Hub
+                Dreamland Medical Oasis
+                Nebula Wellness Center
+                Pinnacle Peaks Medical Plaza
+                Seraphim Springs Hospital
+             */
 
             AdaFruitSettingsManager adaFruitSettingsManager = AdaFruitSettingsManager.GetInstance();
 
@@ -75,8 +110,8 @@ namespace OTSF_Application.Pages {
             DeviceStackPanel.Children.Clear();
             foreach (IDevice device in devices) {
                 device.deviceElement.Height = 40;
-                device.deviceElement.MouseDown += ClickDevice;
-
+                device.deviceElement.button.Click += ClickDevice;
+                device.deviceElement.button.Tag = device;
                 DeviceStackPanel.Children.Add(device.deviceElement);
             }
         }
@@ -85,12 +120,14 @@ namespace OTSF_Application.Pages {
 
             PageManager.GetInstance().device.device.DataReceived -= PageManager.GetInstance().device.OnDataReceived;
 
-            PageManager.GetInstance().device.device = (IDevice)((DeviceElement)sender).Tag;
+            IDevice d = (IDevice)((Button)sender).Tag;
+
+            PageManager.GetInstance().device.device = d;
             PageManager.GetInstance().device.device.DataReceived += PageManager.GetInstance().device.OnDataReceived;
 
-            PageManager.GetInstance().device.LbId.Content = ((IDevice)((DeviceElement)sender).Tag).deviceElement.Id;
-            PageManager.GetInstance().device.LbName.Content = ((IDevice)((DeviceElement)sender).Tag).deviceElement.DeviceName;
-            PageManager.GetInstance().device.LbTemp.Content = ((IDevice)((DeviceElement)sender).Tag).Temperature;
+            PageManager.GetInstance().device.LbId.Content = (d).deviceElement.Id;
+            PageManager.GetInstance().device.LbName.Content = (d).deviceElement.DeviceName;
+            PageManager.GetInstance().device.LbTemp.Content = (d).Temperature;
 
             Storyboard storyboard = PageManager.GetInstance().mainWindow.FindResource("GoToDevice") as Storyboard;
             storyboard.Begin();

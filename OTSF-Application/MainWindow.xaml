@@ -6,7 +6,7 @@
         xmlns:elem="clr-namespace:OTSF_Application.Elements"
         xmlns:page="clr-namespace:OTSF_Application.Pages" xmlns:otsf_application="clr-namespace:OTSF_Application"
         mc:Ignorable="d"
-        Title="Orgran transport smart fridge" Height="450" Width="800">
+        Title="Orgran transport smart fridge" Height="450" Width="800" SizeChanged="Window_SizeChanged">
 
 
     <Window.Resources>
