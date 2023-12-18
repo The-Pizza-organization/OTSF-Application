@@ -3,7 +3,7 @@
 ## What is it ?
 
 - A box for organ transplant
-- 
+
 
 ## What is it for ?
 - The smart fridge could be used by hospital to monitor the transport of organs in urban areas.
